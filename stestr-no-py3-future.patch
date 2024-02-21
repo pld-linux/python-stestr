@@ -1,0 +1,18 @@
+--- stestr-2.6.0/stestr/repository/file.py.orig	2019-12-13 19:59:07.000000000 +0100
++++ stestr-2.6.0/stestr/repository/file.py	2024-02-21 20:15:32.165230159 +0100
+@@ -16,10 +16,14 @@ import errno
+ from io import BytesIO
+ from operator import methodcaller
+ import os
++import six
+ import sys
+ import tempfile
+ 
+-from future.moves.dbm import dumb as my_dbm
++if six.PY3:
++    from dbm import dumb as my_dbm
++else:
++    import dumbdbm as my_dbm
+ from subunit import TestProtocolClient
+ import subunit.v2
+ import testtools

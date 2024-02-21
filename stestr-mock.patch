@@ -1,0 +1,115 @@
+--- stestr-2.6.0/stestr/tests/repository/test_util.py.orig	2019-12-13 19:59:07.000000000 +0100
++++ stestr-2.6.0/stestr/tests/repository/test_util.py	2024-02-21 20:24:39.075600625 +0100
+@@ -10,7 +10,10 @@
+ # License for the specific language governing permissions and limitations
+ # under the License.
+ 
+-import mock
++try:
++    from unittest import mock
++except ImportError:
++    import mock
+ import os
+ import shutil
+ import tempfile
+--- stestr-2.6.0/stestr/tests/test_bisect_tests.py.orig	2019-12-13 19:59:07.000000000 +0100
++++ stestr-2.6.0/stestr/tests/test_bisect_tests.py	2024-02-21 20:25:10.238765133 +0100
+@@ -13,8 +13,11 @@
+ import io
+ import operator
+ 
+-import mock
+ import six
++if six.PY3:
++    from unittest import mock
++else:
++    import mock
+ import subunit
+ import testtools
+ 
+--- stestr-2.6.0/stestr/tests/test_config_file.py.orig	2019-12-13 19:59:07.000000000 +0100
++++ stestr-2.6.0/stestr/tests/test_config_file.py	2024-02-21 20:25:39.635272545 +0100
+@@ -11,7 +11,10 @@
+ # under the License.
+ 
+ import ddt
+-import mock
++try:
++    from unittest import mock
++except ImportError:
++    import mock
+ 
+ from stestr import config_file
+ from stestr.tests import base
+--- stestr-2.6.0/stestr/tests/test_scheduler.py.orig	2019-12-13 19:59:07.000000000 +0100
++++ stestr-2.6.0/stestr/tests/test_scheduler.py	2024-02-21 20:26:07.935119232 +0100
+@@ -13,7 +13,10 @@
+ import datetime
+ import re
+ 
+-import mock
++try:
++    from unittest import mock
++except ImportError:
++    import mock
+ from subunit import iso8601
+ 
+ from stestr.repository import memory
+--- stestr-2.6.0/stestr/tests/test_selection.py.orig	2019-12-13 19:59:07.000000000 +0100
++++ stestr-2.6.0/stestr/tests/test_selection.py	2024-02-21 20:29:12.530785858 +0100
+@@ -12,8 +12,11 @@
+ 
+ import re
+ 
+-import mock
+ import six
++if six.PY3:
++    from unittest import mock
++else:
++    import mock
+ 
+ from stestr import selection
+ from stestr.tests import base
+--- stestr-2.6.0/stestr/tests/test_subunit_trace.py.orig	2019-12-13 19:59:07.000000000 +0100
++++ stestr-2.6.0/stestr/tests/test_subunit_trace.py	2024-02-21 20:27:20.928057128 +0100
+@@ -21,8 +21,11 @@ import sys
+ from ddt import data
+ from ddt import ddt
+ from ddt import unpack
+-from mock import patch
+ import six
++if six.PY3:
++    from unittest.mock import patch
++else:
++    from mock import patch
+ 
+ from stestr import subunit_trace
+ from stestr.tests import base
+--- stestr-2.6.0/stestr/tests/test_test_processor.py.orig	2019-12-13 19:59:07.000000000 +0100
++++ stestr-2.6.0/stestr/tests/test_test_processor.py	2024-02-21 20:27:57.941189944 +0100
+@@ -12,7 +12,10 @@
+ 
+ import subprocess
+ 
+-import mock
++try:
++    from unittest import mock
++except ImportError:
++    import mock
+ 
+ from stestr import test_processor
+ from stestr.tests import base
+--- stestr-2.6.0/stestr/tests/test_user_config.py.orig	2019-12-13 19:59:07.000000000 +0100
++++ stestr-2.6.0/stestr/tests/test_user_config.py	2024-02-21 20:28:26.074370867 +0100
+@@ -13,7 +13,10 @@
+ import io
+ import os
+ 
+-import mock
++try:
++    from unittest import mock
++except ImportError:
++    import mock
+ 
+ from stestr.tests import base
+ from stestr import user_config
