@@ -168,12 +168,15 @@ rm -rf $RPM_BUILD_ROOT
 %py_install
 
 %py_postclean
+%{__rm} -r $RPM_BUILD_ROOT%{py_sitescriptdir}/stestr/tests
 
 %{__mv} $RPM_BUILD_ROOT%{_bindir}/stestr{,-2}
 %endif
 
 %if %{with python3}
 %py3_install
+
+%{__rm} -r $RPM_BUILD_ROOT%{py3_sitescriptdir}/stestr/tests
 
 %{__mv} $RPM_BUILD_ROOT%{_bindir}/stestr{,-3}
 ln -sf stestr-3 $RPM_BUILD_ROOT%{_bindir}/stestr
