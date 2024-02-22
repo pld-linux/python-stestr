@@ -28,7 +28,6 @@ BuildRequires:	python-PyYAML >= 3.10.0
 BuildRequires:	python-cliff >= 2.8.0
 BuildRequires:	python-ddt >= 1.0.1
 BuildRequires:	python-fixtures >= 3.0.0
-BuildRequires:	python-future
 BuildRequires:	python-mock >= 2.0
 BuildRequires:	python-six >= 1.10.0
 BuildRequires:	python-subunit >= 1.3.0
